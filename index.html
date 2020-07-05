@@ -391,9 +391,36 @@ mixpanel.init("80da856588afb08584b848773a59682d", {batch_requests: true})</scrip
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
             <p>Be the first to be notified!</p>
-            <form action="" method="post">
+            <form id="subscribe" action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
+            <script>
+            var myform = $("#subscribe");
+            myform.submit(function(event){
+            	event.preventDefault();
+
+            	var params = myform.serializeArray().reduce(function(obj, item) {
+                 obj[item.name] = item.value;
+                 return obj;
+              }, {});
+
+              // Change to your service ID, or keep using the default service
+              var service_id = "default_service";
+              var template_id = "template_iiCX0UiC";
+
+              myform.find("button").text("Subscribing...");
+              emailjs.send(service_id, template_id, params)
+              	.then(function(){
+                   alert("Subscribed!");
+                   myform.find("button").text("Subscribe");
+                 }, function(err) {
+                   alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+                   myform.find("button").text("Subscribe");
+                });
+
+              return false;
+            });
+            </script>
           </div>
 
         </div>
