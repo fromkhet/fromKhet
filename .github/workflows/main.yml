@@ -19,7 +19,7 @@ jobs:
        - name: Deploy to Firebase
          uses: w9jds/firebase-action@master
          with: 
-           argu: deploy --only hosting
-           env:
+           args: deploy --only hosting
+         env:
             FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKRN }}
                 
