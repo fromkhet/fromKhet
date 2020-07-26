@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     tags: -release-production-*
 
 name: deploy_to_firebase_hosting
