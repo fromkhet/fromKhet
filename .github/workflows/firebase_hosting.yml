@@ -5,6 +5,7 @@ on:
 
 name: deploy_to_firebase_hosting
 
+
 jobs:
   deploy_to_firebase_hosting:
     
